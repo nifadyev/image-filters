@@ -167,5 +167,17 @@ namespace ImageFilters
             GlowingEdgesFilter filter = new GlowingEdgesFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void maximumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MaximumFilter filter = new MaximumFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void glassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlassFilter filter = new GlassFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
