@@ -45,9 +45,11 @@
             this.sobelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highSharpnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.embossingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.glowingEdgesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -113,8 +115,8 @@
             this.sepiaToolStripMenuItem,
             this.highBrigtnessToolStripMenuItem});
             this.dotsточечныеToolStripMenuItem.Name = "dotsточечныеToolStripMenuItem";
-            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.dotsточечныеToolStripMenuItem.Text = "Dots(точечные)";
+            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.dotsточечныеToolStripMenuItem.Text = "Dotty";
             // 
             // inversionToolStripMenuItem
             // 
@@ -151,9 +153,11 @@
             this.gaussianBlurToolStripMenuItem,
             this.sobelToolStripMenuItem,
             this.highSharpnessToolStripMenuItem,
-            this.embossingToolStripMenuItem});
+            this.embossingToolStripMenuItem,
+            this.medianToolStripMenuItem,
+            this.glowingEdgesToolStripMenuItem});
             this.matrixToolStripMenuItem.Name = "matrixToolStripMenuItem";
-            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.matrixToolStripMenuItem.Text = "Matrix";
             // 
             // blurToolStripMenuItem
@@ -191,6 +195,13 @@
             this.embossingToolStripMenuItem.Text = "Embossing";
             this.embossingToolStripMenuItem.Click += new System.EventHandler(this.embossingToolStripMenuItem_Click);
             // 
+            // medianToolStripMenuItem
+            // 
+            this.medianToolStripMenuItem.Name = "medianToolStripMenuItem";
+            this.medianToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.medianToolStripMenuItem.Text = "Median";
+            this.medianToolStripMenuItem.Click += new System.EventHandler(this.medianToolStripMenuItem_Click);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 482);
@@ -215,6 +226,13 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // glowingEdgesToolStripMenuItem
+            // 
+            this.glowingEdgesToolStripMenuItem.Name = "glowingEdgesToolStripMenuItem";
+            this.glowingEdgesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.glowingEdgesToolStripMenuItem.Text = "Glowing Edges";
+            this.glowingEdgesToolStripMenuItem.Click += new System.EventHandler(this.glowingEdgesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -260,6 +278,8 @@
         private System.Windows.Forms.ToolStripMenuItem highSharpnessToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem embossingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medianToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem glowingEdgesToolStripMenuItem;
     }
 }
 

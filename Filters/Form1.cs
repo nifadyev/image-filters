@@ -117,18 +117,11 @@ namespace ImageFilters
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
+        //commit: changed embossing tool strip button
         private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MatrixFilter embossingFilter = new EmbossingFilter();
-            HIghBrightnessFilter highBrightnessFilter = new HIghBrightnessFilter();
-
-
-            //Bitmap resultImage = filter.ProcessImage(image);
-            //pictureBox1.Image = resultImage;
-            //pictureBox1.Refresh();
-
-            // backgroundWorker1.RunWorkerAsync(highBrightnessFilter);
-            //backgroundWorker1.RunWorkerAsync(embossingFilter);
+            backgroundWorker1.RunWorkerAsync(embossingFilter);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,7 +130,7 @@ namespace ImageFilters
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveFileDialog1.Title = "Save an Image File";
           
-            if (saveFileDialog1.ShowDialog()==DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             { 
                 System.IO.FileStream fs =
                    (System.IO.FileStream)saveFileDialog1.OpenFile();
@@ -161,6 +154,30 @@ namespace ImageFilters
 
                 fs.Close();
             }
+        }
+
+        private void medianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MedianFilter filter = new MedianFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void glowingEdgesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlowingEdgesFilter filter = new GlowingEdgesFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void maximumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MaximumFilter filter = new MaximumFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void glassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlassFilter filter = new GlassFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
     }
 }

@@ -7,82 +7,42 @@ using System.Drawing;
 
 namespace ImageFilters
 {
-    class MedianFilter : MatrixFilter
+    class MedianFilter : Filters
     {
         public MedianFilter()
         {
             //kernel = new float[,];
         }
 
-        //protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
-        //{
-        //    //inputPixelValue[x + fx - edgex][y + fy - edgey]
+        protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
+        {
+            Color[] colors = new Color[9];
+            int[] R = new int[9];
+            int[] G = new int[9];
+            int[] B = new int[9];
 
-        //    //int radiusX = kernel.GetLength(0) / 2;
-        //    //int radiusY = kernel.GetLength(1) / 2;
+            colors[0] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), Clamp(y - 1, 0, sourceImage.Height - 1));
+            colors[1] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), y);
+            colors[2] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), Clamp(y + 1, 0, sourceImage.Height - 1));
+            colors[3] = sourceImage.GetPixel(x, Clamp(y - 1, 0, sourceImage.Height - 1));
+            colors[4] = sourceImage.GetPixel(x, y);
+            colors[5] = sourceImage.GetPixel(x, Clamp(y + 1, 0, sourceImage.Height - 1));
+            colors[6] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), Clamp(y - 1, 0, sourceImage.Height - 1));
+            colors[7] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), y);
+            colors[8] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), Clamp(y + 1, 0, sourceImage.Height - 1));
 
-        //    int width = sourceImage.Width / 2;
-        //    int height = sourceImage.Height / 2;
+            for (int i = 0; i < 9; i++)
+            {
+                R[i] = colors[i].R;
+                G[i] = colors[i].G;
+                B[i] = colors[i].B;
+            }
 
+            Array.Sort(R);
+            Array.Sort(G);
+            Array.Sort(B);
 
-        //    //float resultR = 0;
-        //    //float resultG = 0;
-        //    //float resultB = 0;
-
-        //    //for (int l = -radiusY; l <= radiusY; l++)
-        //    //{
-        //    //    for (int k = -radiusX; k <= radiusX; k++)
-        //    //    {
-        //    //        int idX = Clamp(x + k, 0, sourceImage.Width - 1);
-        //    //        int idY = Clamp(y + l, 0, sourceImage.Height - 1);
-        //    //        Color neighborColor = sourceImage.GetPixel(idX, idY);
-
-        //    //        resultR += neighborColor.R * kernel[k + radiusX, l + radiusY];
-        //    //        resultG += neighborColor.G * kernel[k + radiusX, l + radiusY];
-        //    //        resultB += neighborColor.B * kernel[k + radiusX, l + radiusY];
-        //    //    }
-        //    //}
-
-        //    //return Color.FromArgb(Clamp((int)resultR, 0, 255),
-        //    //                      Clamp((int)resultG, 0, 255),
-        //    //                      Clamp((int)resultB, 0, 255));
-
-        //    for (int l = 1; l < width - 1; l++)
-        //    {
-        //        for (int k = 1; k < height - 1; k++)
-        //        {
-        //            Color[] window = new Color[9];
-        //            int[] windowR = new int[9];
-        //            int[] windowG = new int[9];
-        //            int[] windowB = new int[9];
-        //            int count = 0;
-        //            for (int i = l - 1; i < l + 2; i++)
-        //            {
-        //                for (int j = k - 1; j < k + 2; j++)
-        //                {
-        //                    window[count] = sourceImage.GetPixel(i, j);
-        //                    windowR[count] = window[count].R;
-        //                    windowG[count] = window[count].G;
-        //                    windowB[count] = window[count].B;
-        //                    count++;
-        //                }
-        //            }
-        //            Array.Sort(windowR);
-        //            Array.Sort(windowG);
-        //            Array.Sort(windowB);
-        //            int r = windowR[9 / 2];
-        //            int g = windowG[9 / 2];
-        //            int b = windowB[9 / 2];
-        //            Color color = Color.FromArgb(r, g, b);
-
-
-        //        }
-
-        //        return color;/*Color.FromArgb(Clamp((int)resultR, 0, 255),
-        //                              Clamp((int)resultG, 0, 255),
-        //                              Clamp((int)resultB, 0, 255));*/
-
-
-        //    }
+            return Color.FromArgb(R[4], G[4], B[4]);
+        }
     }
 }
