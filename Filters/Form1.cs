@@ -16,10 +16,36 @@ namespace ImageFilters
 {
     public partial class Form1 : Form
     {
+
+        //List<Bitmap> list_img;
+        //int count;
+        //Внимание form;
+        //public Foto()
+        //{
+        //    InitializeComponent();
+        //    list_img = new List<Bitmap>();
+        //    progressBar1.Visible = false;
+        //    /*button2.Visible=button3.Visible=*/
+        //    button1.Visible = false;
+        //    count = -1;
+        //    form = new Внимание();
+        List<Bitmap> images;
         Bitmap image;
+        int imageCounter;
+
         public Form1()
         {
             InitializeComponent();
+            images = new List<Bitmap>();
+            //TODO: DONE Add implementation (hiding progress bar and cancel button AFTER filter was added)
+            progressBar1.Visible = false;
+            cancelButton.Visible = false;
+            cancelButton.Enabled = false;
+            //TODO: DONE Add implementation (hiding buttons TILL some filter was added)
+            //backButton.Visible = backButton.Enabled = false;
+            //forwardButton.Visible = forwardButton.Enabled = false;
+            imageCounter = -1;
+            
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,70 +91,81 @@ namespace ImageFilters
             {
                 pictureBox1.Image = image;
                 pictureBox1.Refresh();
+               //progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
             }
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
 
             progressBar1.Value = 0;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             backgroundWorker1.CancelAsync();
         }
 
         private void blurToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             Filters filter = new BlurFilter();
             backgroundWorker1.RunWorkerAsync(filter);
+            //progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
         }
 
         private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             Filters filter = new GaussianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             GrayScaleFilter filter = new GrayScaleFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void sepiaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             Filters filter = new SepiaFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void highBrigtnessToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             HIghBrightnessFilter filter = new HIghBrightnessFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void sobelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             SobolFilter filter = new SobolFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void highSharpnessToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             HighSharpnessFilter filter = new HighSharpnessFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
             MatrixFilter embossingFilter = new EmbossingFilter();
-            HIghBrightnessFilter highBrightnessFilter = new HIghBrightnessFilter();
-
-
-            //Bitmap resultImage = filter.ProcessImage(image);
-            //pictureBox1.Image = resultImage;
-            //pictureBox1.Refresh();
-
-            // backgroundWorker1.RunWorkerAsync(highBrightnessFilter);
-            //backgroundWorker1.RunWorkerAsync(embossingFilter);
+            backgroundWorker1.RunWorkerAsync(embossingFilter);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,7 +174,7 @@ namespace ImageFilters
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveFileDialog1.Title = "Save an Image File";
           
-            if (saveFileDialog1.ShowDialog()==DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             { 
                 System.IO.FileStream fs =
                    (System.IO.FileStream)saveFileDialog1.OpenFile();
@@ -162,5 +199,72 @@ namespace ImageFilters
                 fs.Close();
             }
         }
+
+        private void medianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            MedianFilter filter = new MedianFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void glowingEdgesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            GlowingEdgesFilter filter = new GlowingEdgesFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void maximumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            MaximumFilter filter = new MaximumFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void glassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            GlassFilter filter = new GlassFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void forwardButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    if (count > 0)
+        //    {
+        //        pictureBox1.Image = list_img[--count];
+        //        pictureBox1.Refresh();
+        //    }
+        //    //  if (count == 0)
+        //    // button2.Visible = false;
+
+        //}
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    if (count < list_img.Count - 1)
+        //    {
+        //        pictureBox1.Image = list_img[++count];
+        //        pictureBox1.Refresh();
+        //    }
+        //    // if (count == list_img.Count - 1)
+        //    //   button3.Visible = false;
+
+        //}
     }
 }
