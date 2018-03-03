@@ -53,10 +53,12 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.cancelButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.backButton = new System.Windows.Forms.Button();
-            this.forwardButton = new System.Windows.Forms.Button();
+            this.backPicture = new System.Windows.Forms.PictureBox();
+            this.frowardPicture = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frowardPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -255,35 +257,35 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // backButton
+            // backPicture
             // 
-            this.backButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("backButton.BackgroundImage")));
-            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.backButton.Location = new System.Drawing.Point(12, 599);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(37, 37);
-            this.backButton.TabIndex = 5;
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            this.backPicture.Image = ((System.Drawing.Image)(resources.GetObject("backPicture.Image")));
+            this.backPicture.Location = new System.Drawing.Point(12, 599);
+            this.backPicture.Name = "backPicture";
+            this.backPicture.Size = new System.Drawing.Size(37, 37);
+            this.backPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.backPicture.TabIndex = 7;
+            this.backPicture.TabStop = false;
+            this.backPicture.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // forwardButton
+            // frowardPicture
             // 
-            this.forwardButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forwardButton.BackgroundImage")));
-            this.forwardButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.forwardButton.Location = new System.Drawing.Point(65, 599);
-            this.forwardButton.Name = "forwardButton";
-            this.forwardButton.Size = new System.Drawing.Size(37, 37);
-            this.forwardButton.TabIndex = 6;
-            this.forwardButton.UseVisualStyleBackColor = true;
-            this.forwardButton.Click += new System.EventHandler(this.forwardButton_Click);
+            this.frowardPicture.Image = ((System.Drawing.Image)(resources.GetObject("frowardPicture.Image")));
+            this.frowardPicture.Location = new System.Drawing.Point(65, 599);
+            this.frowardPicture.Name = "frowardPicture";
+            this.frowardPicture.Size = new System.Drawing.Size(37, 37);
+            this.frowardPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.frowardPicture.TabIndex = 8;
+            this.frowardPicture.TabStop = false;
+            this.frowardPicture.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 648);
-            this.Controls.Add(this.forwardButton);
-            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.frowardPicture);
+            this.Controls.Add(this.backPicture);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pictureBox1);
@@ -297,6 +299,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frowardPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,8 +332,8 @@
         private System.Windows.Forms.ToolStripMenuItem glowingEdgesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maximumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glassToolStripMenuItem;
-        private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Button forwardButton;
+        private System.Windows.Forms.PictureBox backPicture;
+        private System.Windows.Forms.PictureBox frowardPicture;
     }
 }
 
