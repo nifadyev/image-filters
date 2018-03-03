@@ -31,7 +31,7 @@ namespace ImageFilters
         //    form = new Внимание();
         List<Bitmap> images;
         Bitmap image;
-        int imageCounter;
+        //int imageCounter;
 
         public Form1()
         {
@@ -44,7 +44,8 @@ namespace ImageFilters
             //TODO: DONE Add implementation (hiding buttons TILL some filter was added)
             //backButton.Visible = backButton.Enabled = false;
             //forwardButton.Visible = forwardButton.Enabled = false;
-            imageCounter = -1;
+
+            //imageCounter = -1;
             
         }
 
@@ -232,12 +233,12 @@ namespace ImageFilters
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void forwardButton_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
