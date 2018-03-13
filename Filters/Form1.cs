@@ -10,42 +10,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.ComponentModel;
+
 
 namespace ImageFilters
 {
     public partial class Form1 : Form
     {
-
-        //List<Bitmap> list_img;
-        //int count;
-        //Внимание form;
-        //public Foto()
-        //{
-        //    InitializeComponent();
-        //    list_img = new List<Bitmap>();
-        //    progressBar1.Visible = false;
-        //    /*button2.Visible=button3.Visible=*/
-        //    button1.Visible = false;
-        //    count = -1;
-        //    form = new Внимание();
         List<Bitmap> images;
-        Bitmap image;
-        //int imageCounter;
+        //Bitmap image;
+        int imageCounter;
 
         public Form1()
         {
             InitializeComponent();
             images = new List<Bitmap>();
             //TODO: DONE Add implementation (hiding progress bar and cancel button AFTER filter was added)
-            progressBar1.Visible = false;
-            cancelButton.Visible = false;
-            cancelButton.Enabled = false;
+
+            //progressBar1.Visible = false;
+            //cancelButton.Visible = false;
+            //cancelButton.Enabled = false;
+
             //TODO: DONE Add implementation (hiding buttons TILL some filter was added)
             //backButton.Visible = backButton.Enabled = false;
             //forwardButton.Visible = forwardButton.Enabled = false;
 
-            //imageCounter = -1;
+            imageCounter = -1;
             
         }
 
@@ -56,9 +45,16 @@ namespace ImageFilters
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                image = new Bitmap(dialog.FileName);
-                pictureBox1.Image = image;
+                Bitmap image = new Bitmap(dialog.FileName);
+               //pictureBox1.Image = image;
+                //pictureBox1.Refresh();
+
+                images.Clear();
+                images.Add(image);
+                pictureBox1.Image = images.Last();
                 pictureBox1.Refresh();
+                // button2.Visible = button3.Visible = false;
+                imageCounter = 0;
             }
         }
 
@@ -66,18 +62,21 @@ namespace ImageFilters
         {
             InvertFilter filter = new InvertFilter();
             backgroundWorker1.RunWorkerAsync(filter);
-            //Bitmap resultImage = filter.ProcessImage(image);
-            //pictureBox1.Image = resultImage;
-            //pictureBox1.Refresh();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Bitmap newImage = ((Filters)e.Argument).ProcessImage(image, backgroundWorker1);
+            Bitmap newImage = ((Filters)e.Argument).ProcessImage(images[imageCounter], backgroundWorker1);
 
-            if (backgroundWorker1.CancellationPending != true) // TODO: CHANGE
+            if (imageCounter != images.Count - 1)
             {
-                image = newImage;
+                images.RemoveRange(imageCounter + 1, images.Count - imageCounter - 1);
+            }
+
+            if (backgroundWorker1.CancellationPending != true)
+            {
+                images.Add(newImage);
+                imageCounter++;
             }
         }
 
@@ -90,11 +89,11 @@ namespace ImageFilters
         {
             if (!e.Cancelled)
             {
-                pictureBox1.Image = image;
+                pictureBox1.Image = images.Last();
                 pictureBox1.Refresh();
                //progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
             }
-            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
+           // progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = false;
 
             progressBar1.Value = 0;
         }
@@ -115,7 +114,7 @@ namespace ImageFilters
 
         private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            //progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
             Filters filter = new GaussianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
@@ -123,7 +122,7 @@ namespace ImageFilters
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            //progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
             GrayScaleFilter filter = new GrayScaleFilter();
             backgroundWorker1.RunWorkerAsync(filter);
@@ -171,28 +170,28 @@ namespace ImageFilters
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         { 
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
-            saveFileDialog1.Title = "Save an Image File";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            saveFileDialog.Title = "Save an Image File";
           
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             { 
                 System.IO.FileStream fs =
-                   (System.IO.FileStream)saveFileDialog1.OpenFile();
-                switch (saveFileDialog1.FilterIndex)
+                   (System.IO.FileStream)saveFileDialog.OpenFile();
+                switch (saveFileDialog.FilterIndex)
                 {
                     case 1:
-                        image.Save(fs,
+                        images[imageCounter].Save(fs,
                            System.Drawing.Imaging.ImageFormat.Jpeg);
                         break;
 
                     case 2:
-                        image.Save(fs,
+                        images[imageCounter].Save(fs,
                            System.Drawing.Imaging.ImageFormat.Bmp);
                         break;
 
                     case 3:
-                        image.Save(fs,
+                        images[imageCounter].Save(fs,
                            System.Drawing.Imaging.ImageFormat.Gif);
                         break;
                 }
@@ -231,16 +230,6 @@ namespace ImageFilters
 
             GlassFilter filter = new GlassFilter();
             backgroundWorker1.RunWorkerAsync(filter);
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dilationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,29 +276,22 @@ namespace ImageFilters
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
+        private void forwardPicture_Click(object sender, EventArgs e)
+        {
+            if (imageCounter < images.Count - 1)
+            {
+                pictureBox1.Image = images[++imageCounter];
+                pictureBox1.Refresh();
+            }
+        }
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    if (count > 0)
-        //    {
-        //        pictureBox1.Image = list_img[--count];
-        //        pictureBox1.Refresh();
-        //    }
-        //    //  if (count == 0)
-        //    // button2.Visible = false;
-
-        //}
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    if (count < list_img.Count - 1)
-        //    {
-        //        pictureBox1.Image = list_img[++count];
-        //        pictureBox1.Refresh();
-        //    }
-        //    // if (count == list_img.Count - 1)
-        //    //   button3.Visible = false;
-
-        //}
+        private void backPicture_Click(object sender, EventArgs e)
+        {
+            if (imageCounter > 0)
+            {
+                pictureBox1.Image = images[--imageCounter];
+                pictureBox1.Refresh();
+            }
+        }
     }
 }
