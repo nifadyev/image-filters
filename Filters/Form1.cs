@@ -243,6 +243,50 @@ namespace ImageFilters
 
         }
 
+        private void dilationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            bool[,] mask = {{true, true, true },
+                            {true, true, true },
+                            {true, true, true} };
+
+            Dilation filter = new Dilation(mask);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            bool[,] mask = {{true, true, true },
+                            {true, true, true },
+                            {true, true, true} };
+
+            Erosion filter = new Erosion(mask);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void openingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            bool[,] mask = {{true, true, true },
+                            {true, true, true },
+                            {true, true, true} };
+
+            Opening filter = new Opening(mask);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void closingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+            bool[,] mask = {{true, true, true },
+                            {true, true, true },
+                            {true, true, true} };
+
+            Closing filter = new Closing(mask);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
 
         //private void button2_Click(object sender, EventArgs e)
         //{
