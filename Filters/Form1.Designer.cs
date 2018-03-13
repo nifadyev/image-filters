@@ -49,10 +49,14 @@
             this.highSharpnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.embossingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.glowingEdgesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+>>>>>>> master
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.cancelButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+<<<<<<< HEAD
             this.backPicture = new System.Windows.Forms.PictureBox();
             this.frowardPicture = new System.Windows.Forms.PictureBox();
             this.morphologyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +64,9 @@
             this.erosionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.glowingEdgesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> master
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backPicture)).BeginInit();
@@ -130,7 +137,11 @@
             this.maximumToolStripMenuItem,
             this.glassToolStripMenuItem});
             this.dotsточечныеToolStripMenuItem.Name = "dotsточечныеToolStripMenuItem";
+<<<<<<< HEAD
             this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+=======
+            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+>>>>>>> master
             this.dotsточечныеToolStripMenuItem.Text = "Dotty";
             // 
             // inversionToolStripMenuItem
@@ -186,7 +197,11 @@
             this.medianToolStripMenuItem,
             this.glowingEdgesToolStripMenuItem});
             this.matrixToolStripMenuItem.Name = "matrixToolStripMenuItem";
+<<<<<<< HEAD
             this.matrixToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+=======
+            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+>>>>>>> master
             this.matrixToolStripMenuItem.Text = "Matrix";
             // 
             // blurToolStripMenuItem
@@ -231,6 +246,7 @@
             this.medianToolStripMenuItem.Text = "Median";
             this.medianToolStripMenuItem.Click += new System.EventHandler(this.medianToolStripMenuItem_Click);
             // 
+<<<<<<< HEAD
             // glowingEdgesToolStripMenuItem
             // 
             this.glowingEdgesToolStripMenuItem.Name = "glowingEdgesToolStripMenuItem";
@@ -238,6 +254,8 @@
             this.glowingEdgesToolStripMenuItem.Text = "Glowing Edges";
             this.glowingEdgesToolStripMenuItem.Click += new System.EventHandler(this.glowingEdgesToolStripMenuItem_Click);
             // 
+=======
+>>>>>>> master
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(126, 599);
@@ -263,6 +281,7 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+<<<<<<< HEAD
             // backPicture
             // 
             this.backPicture.Image = ((System.Drawing.Image)(resources.GetObject("backPicture.Image")));
@@ -323,6 +342,14 @@
             this.closingToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closingToolStripMenuItem.Text = "Closing";
             this.closingToolStripMenuItem.Click += new System.EventHandler(this.closingToolStripMenuItem_Click);
+=======
+            // glowingEdgesToolStripMenuItem
+            // 
+            this.glowingEdgesToolStripMenuItem.Name = "glowingEdgesToolStripMenuItem";
+            this.glowingEdgesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.glowingEdgesToolStripMenuItem.Text = "Glowing Edges";
+            this.glowingEdgesToolStripMenuItem.Click += new System.EventHandler(this.glowingEdgesToolStripMenuItem_Click);
+>>>>>>> master
             // 
             // Form1
             // 
@@ -375,6 +402,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glowingEdgesToolStripMenuItem;
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem maximumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glassToolStripMenuItem;
         private System.Windows.Forms.PictureBox backPicture;
@@ -384,6 +412,8 @@
         private System.Windows.Forms.ToolStripMenuItem erosionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closingToolStripMenuItem;
+=======
+>>>>>>> master
     }
 }
 

@@ -160,10 +160,14 @@ namespace ImageFilters
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
+        //commit: changed embossing tool strip button
         private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
+=======
+>>>>>>> master
             MatrixFilter embossingFilter = new EmbossingFilter();
             backgroundWorker1.RunWorkerAsync(embossingFilter);
         }
@@ -174,7 +178,11 @@ namespace ImageFilters
             saveFileDialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveFileDialog.Title = "Save an Image File";
           
+<<<<<<< HEAD
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
+=======
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+>>>>>>> master
             { 
                 System.IO.FileStream fs =
                    (System.IO.FileStream)saveFileDialog.OpenFile();
@@ -202,30 +210,40 @@ namespace ImageFilters
 
         private void medianToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
+=======
+>>>>>>> master
             MedianFilter filter = new MedianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void glowingEdgesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
+=======
+>>>>>>> master
             GlowingEdgesFilter filter = new GlowingEdgesFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void maximumToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
+=======
+>>>>>>> master
             MaximumFilter filter = new MaximumFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void glassToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
             GlassFilter filter = new GlassFilter();
@@ -293,5 +311,10 @@ namespace ImageFilters
                 pictureBox1.Refresh();
             }
         }
+=======
+            GlassFilter filter = new GlassFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+>>>>>>> master
     }
 }
