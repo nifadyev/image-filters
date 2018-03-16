@@ -19,6 +19,8 @@ namespace ImageFilters
         List<Bitmap> images;
         //Bitmap image;
         int imageCounter;
+        int maxSize = 0;
+        bool[,] structureElement = null;
 
         public Form1()
         {
@@ -160,14 +162,10 @@ namespace ImageFilters
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        //commit: changed embossing tool strip button
         private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
-=======
->>>>>>> master
             MatrixFilter embossingFilter = new EmbossingFilter();
             backgroundWorker1.RunWorkerAsync(embossingFilter);
         }
@@ -178,11 +176,7 @@ namespace ImageFilters
             saveFileDialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveFileDialog.Title = "Save an Image File";
           
-<<<<<<< HEAD
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-=======
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
->>>>>>> master
             { 
                 System.IO.FileStream fs =
                    (System.IO.FileStream)saveFileDialog.OpenFile();
@@ -210,40 +204,30 @@ namespace ImageFilters
 
         private void medianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
-=======
->>>>>>> master
             MedianFilter filter = new MedianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void glowingEdgesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
-=======
->>>>>>> master
             GlowingEdgesFilter filter = new GlowingEdgesFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void maximumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
-=======
->>>>>>> master
             MaximumFilter filter = new MaximumFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void glassToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
 
             GlassFilter filter = new GlassFilter();
@@ -253,44 +237,40 @@ namespace ImageFilters
         private void dilationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
-            bool[,] mask = {{true, true, true },
-                            {true, true, true },
-                            {true, true, true} };
 
-            Dilation filter = new Dilation(mask);
+            Morphology filter = new Morphology(images[imageCounter], this.maxSize, 1);
+            filter.SetStructureElement(structureElement);
+
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
-            bool[,] mask = {{true, true, true },
-                            {true, true, true },
-                            {true, true, true} };
 
-            Erosion filter = new Erosion(mask);
+            Morphology filter = new Morphology(images[imageCounter], this.maxSize, 2);
+            filter.SetStructureElement(structureElement);
+
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void openingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
-            bool[,] mask = {{true, true, true },
-                            {true, true, true },
-                            {true, true, true} };
 
-            Opening filter = new Opening(mask);
+            Morphology filter = new Opening(images[imageCounter], this.maxSize, 1);
+            filter.SetStructureElement(structureElement);
+
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void closingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
-            bool[,] mask = {{true, true, true },
-                            {true, true, true },
-                            {true, true, true} };
 
-            Closing filter = new Closing(mask);
+            Morphology filter = new Closing(images[imageCounter], this.maxSize, 2);
+            filter.SetStructureElement(structureElement);
+
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -311,10 +291,22 @@ namespace ImageFilters
                 pictureBox1.Refresh();
             }
         }
-=======
-            GlassFilter filter = new GlassFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
+
+        private void setStructureElementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form2 form2 = new Form2(this);
+                form2.Owner = this;
+                form2.ShowDialog();
+
+                this.maxSize = form2.maxSize;
+                this.structureElement = form2.structureElement;
+            }
+            catch
+            {
+                MessageBox.Show("Set structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
->>>>>>> master
     }
 }

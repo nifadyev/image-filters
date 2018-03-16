@@ -49,28 +49,22 @@
             this.highSharpnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.embossingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD
             this.glowingEdgesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-=======
->>>>>>> master
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-<<<<<<< HEAD
-            this.backPicture = new System.Windows.Forms.PictureBox();
-            this.frowardPicture = new System.Windows.Forms.PictureBox();
             this.morphologyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dilationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erosionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-=======
-            this.glowingEdgesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
->>>>>>> master
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backPicture = new System.Windows.Forms.PictureBox();
+            this.forwardPicture = new System.Windows.Forms.PictureBox();
+            this.setStructureElementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frowardPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forwardPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -122,7 +116,8 @@
             this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dotsточечныеToolStripMenuItem,
             this.matrixToolStripMenuItem,
-            this.morphologyToolStripMenuItem});
+            this.morphologyToolStripMenuItem,
+            this.setStructureElementToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
             this.filtersToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.filtersToolStripMenuItem.Text = "Filters";
@@ -137,11 +132,7 @@
             this.maximumToolStripMenuItem,
             this.glassToolStripMenuItem});
             this.dotsточечныеToolStripMenuItem.Name = "dotsточечныеToolStripMenuItem";
-<<<<<<< HEAD
-            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-=======
-            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
->>>>>>> master
+            this.dotsточечныеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dotsточечныеToolStripMenuItem.Text = "Dotty";
             // 
             // inversionToolStripMenuItem
@@ -197,11 +188,7 @@
             this.medianToolStripMenuItem,
             this.glowingEdgesToolStripMenuItem});
             this.matrixToolStripMenuItem.Name = "matrixToolStripMenuItem";
-<<<<<<< HEAD
-            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-=======
-            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
->>>>>>> master
+            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.matrixToolStripMenuItem.Text = "Matrix";
             // 
             // blurToolStripMenuItem
@@ -246,63 +233,12 @@
             this.medianToolStripMenuItem.Text = "Median";
             this.medianToolStripMenuItem.Click += new System.EventHandler(this.medianToolStripMenuItem_Click);
             // 
-<<<<<<< HEAD
             // glowingEdgesToolStripMenuItem
             // 
             this.glowingEdgesToolStripMenuItem.Name = "glowingEdgesToolStripMenuItem";
             this.glowingEdgesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.glowingEdgesToolStripMenuItem.Text = "Glowing Edges";
             this.glowingEdgesToolStripMenuItem.Click += new System.EventHandler(this.glowingEdgesToolStripMenuItem_Click);
-            // 
-=======
->>>>>>> master
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(126, 599);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(740, 37);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(885, 599);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(87, 37);
-            this.cancelButton.TabIndex = 4;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-<<<<<<< HEAD
-            // backPicture
-            // 
-            this.backPicture.Image = ((System.Drawing.Image)(resources.GetObject("backPicture.Image")));
-            this.backPicture.Location = new System.Drawing.Point(12, 599);
-            this.backPicture.Name = "backPicture";
-            this.backPicture.Size = new System.Drawing.Size(37, 37);
-            this.backPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.backPicture.TabIndex = 7;
-            this.backPicture.TabStop = false;
-            this.backPicture.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // frowardPicture
-            // 
-            this.frowardPicture.Image = ((System.Drawing.Image)(resources.GetObject("frowardPicture.Image")));
-            this.frowardPicture.Location = new System.Drawing.Point(65, 599);
-            this.frowardPicture.Name = "frowardPicture";
-            this.frowardPicture.Size = new System.Drawing.Size(37, 37);
-            this.frowardPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.frowardPicture.TabIndex = 8;
-            this.frowardPicture.TabStop = false;
-            this.frowardPicture.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // morphologyToolStripMenuItem
             // 
@@ -312,7 +248,7 @@
             this.openingToolStripMenuItem,
             this.closingToolStripMenuItem});
             this.morphologyToolStripMenuItem.Name = "morphologyToolStripMenuItem";
-            this.morphologyToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.morphologyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.morphologyToolStripMenuItem.Text = "Morphology";
             // 
             // dilationToolStripMenuItem
@@ -342,21 +278,67 @@
             this.closingToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closingToolStripMenuItem.Text = "Closing";
             this.closingToolStripMenuItem.Click += new System.EventHandler(this.closingToolStripMenuItem_Click);
-=======
-            // glowingEdgesToolStripMenuItem
             // 
-            this.glowingEdgesToolStripMenuItem.Name = "glowingEdgesToolStripMenuItem";
-            this.glowingEdgesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
-            this.glowingEdgesToolStripMenuItem.Text = "Glowing Edges";
-            this.glowingEdgesToolStripMenuItem.Click += new System.EventHandler(this.glowingEdgesToolStripMenuItem_Click);
->>>>>>> master
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(126, 599);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(740, 37);
+            this.progressBar1.TabIndex = 2;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(885, 599);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(87, 37);
+            this.cancelButton.TabIndex = 4;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backPicture
+            // 
+            this.backPicture.Image = ((System.Drawing.Image)(resources.GetObject("backPicture.Image")));
+            this.backPicture.Location = new System.Drawing.Point(12, 599);
+            this.backPicture.Name = "backPicture";
+            this.backPicture.Size = new System.Drawing.Size(37, 37);
+            this.backPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.backPicture.TabIndex = 7;
+            this.backPicture.TabStop = false;
+            this.backPicture.Click += new System.EventHandler(this.backPicture_Click);
+            // 
+            // forwardPicture
+            // 
+            this.forwardPicture.Image = ((System.Drawing.Image)(resources.GetObject("forwardPicture.Image")));
+            this.forwardPicture.Location = new System.Drawing.Point(65, 599);
+            this.forwardPicture.Name = "forwardPicture";
+            this.forwardPicture.Size = new System.Drawing.Size(37, 37);
+            this.forwardPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.forwardPicture.TabIndex = 8;
+            this.forwardPicture.TabStop = false;
+            this.forwardPicture.Click += new System.EventHandler(this.forwardPicture_Click);
+            // 
+            // setStructureElementToolStripMenuItem
+            // 
+            this.setStructureElementToolStripMenuItem.Name = "setStructureElementToolStripMenuItem";
+            this.setStructureElementToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.setStructureElementToolStripMenuItem.Text = "Set structure element";
+            this.setStructureElementToolStripMenuItem.Click += new System.EventHandler(this.setStructureElementToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 648);
-            this.Controls.Add(this.frowardPicture);
+            this.Controls.Add(this.forwardPicture);
             this.Controls.Add(this.backPicture);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.progressBar1);
@@ -372,7 +354,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.backPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frowardPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forwardPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,18 +384,16 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glowingEdgesToolStripMenuItem;
-<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem maximumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem glassToolStripMenuItem;
         private System.Windows.Forms.PictureBox backPicture;
-        private System.Windows.Forms.PictureBox frowardPicture;
+        private System.Windows.Forms.PictureBox forwardPicture;
         private System.Windows.Forms.ToolStripMenuItem morphologyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dilationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem erosionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closingToolStripMenuItem;
-=======
->>>>>>> master
+        private System.Windows.Forms.ToolStripMenuItem setStructureElementToolStripMenuItem;
     }
 }
 
