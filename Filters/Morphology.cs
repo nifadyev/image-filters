@@ -1,212 +1,153 @@
-﻿using System;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using System.ComponentModel;
+//using System.ComponentModel;
 
 namespace ImageFilters
 {
-    abstract class Morphology : Filters
+    class Morphology : Filters
     {
-        protected bool[,] mask;
-        protected int maskWidth, maskHeight;
+        public int maxSize;
+        public int morphologyType;
+        public Bitmap resultImage;
+        public bool[,] structureElement = null;
+
+        public Morphology(Bitmap image, int size, int typeOfMorphology)
+        {
+            maxSize = size;
+            morphologyType = typeOfMorphology;
+            resultImage = image;
+        }
+
+        public void SetStructureElement(bool[,] input)
+        {
+            structureElement = input;
+        }
 
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
-            int resultR = 0;
-            int resultG = 0;
-            int resultB = 0;
-
-            for (int i = -maskWidth / 2; i <= maskWidth / 2; ++i)
+            switch(morphologyType)
             {
-                for (int j = -maskHeight / 2; j <= maskHeight / 2; ++j)
+                case 1:
+                    return Dilation(resultImage, x, y);
+                case 2:
+                    return Erosion(resultImage/*sourceImage*/, x, y);
+                default:
+                    return Color.Black;
+            }
+        }
+
+        protected Color Dilation(Bitmap sourceImage, int x, int y)
+        {
+            int maxR = 0;
+            int maxG = 0;
+            int maxB = 0;
+            int radius = maxSize / 2;
+
+            for (int i = -radius; i <= radius; ++i)
+            {
+                for (int j = -radius; j <= radius; ++j)
                 {
                     int idX = Clamp(x + i, 0, sourceImage.Width - 1);
                     int idY = Clamp(y + j, 0, sourceImage.Height - 1);
-                    Color neighborColor = sourceImage.GetPixel(idX, idY);
+                    Color currentColor = sourceImage.GetPixel(idX, idY);
 
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.R > resultR))
-                        resultR = neighborColor.R;
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.G > resultG))
-                        resultG = neighborColor.G;
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.B > resultB))
-                        resultB = neighborColor.B;
+                    if (structureElement == null || structureElement[i + radius, j + radius])
+                    {
+                        if (currentColor.R > maxR)
+                        {
+                            maxR = currentColor.R;
+                        }
+                        if (currentColor.G > maxG)
+                        {
+                            maxG = currentColor.G;
+                        }
+                        if (currentColor.B > maxB)
+                        {
+                            maxB = currentColor.B;
+                        }
+                    }
                 }
             }
-            return Color.FromArgb(resultR, resultG, resultB);
+
+            return Color.FromArgb(maxR, maxG, maxB);
         }
 
-        protected Color CalculateNewPixelColorMin(Bitmap sourceImage, int x, int y)
+        protected Color Erosion(Bitmap sourceImage, int x, int y)
         {
-            int resultR = 255;
-            int resultG = 255;
-            int resultB = 255;
+            int minR = 255;
+            int minG = 255;
+            int minB = 255;
+            int radius = maxSize / 2;
 
-            for (int i = -maskWidth / 2; i <= maskWidth / 2; ++i)
+            for (int i = -radius; i <= radius; ++i)
             {
-                for (int j = -maskHeight / 2; j <= maskHeight / 2; ++j)
+                for (int j = -radius; j <= radius; ++j)
                 {
                     int idX = Clamp(x + i, 0, sourceImage.Width - 1);
                     int idY = Clamp(y + j, 0, sourceImage.Height - 1);
-                    Color neighborColor = sourceImage.GetPixel(idX, idY);
+                    Color currentColor = sourceImage.GetPixel(idX, idY);
 
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.R < resultR))
-                        resultR = neighborColor.R;
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.G < resultG))
-                        resultG = neighborColor.G;
-                    if ((mask[i + maskWidth / 2, j + maskHeight / 2]) && (neighborColor.B < resultB))
-                        resultB = neighborColor.B;
+                    if (structureElement == null || structureElement[i + radius, j + radius])
+                    {
+                        if (currentColor.R < minR)
+                        {
+                            minR = currentColor.R;
+                        }
+                        if (currentColor.G < minG)
+                        {
+                            minG = currentColor.G;
+                        }
+                        if (currentColor.B < minB)
+                        {
+                            minB = currentColor.B;
+                        }
+                    }
                 }
             }
 
-            return Color.FromArgb(resultR, resultG, resultB);
-        }
-    }
-
-
-    class Dilation : Morphology
-    {
-        public Dilation(bool[,] mask)
-        {
-            this.mask = mask;
-            maskWidth = mask.GetLength(0);
-            maskHeight = mask.GetLength(1);
-        }
-
-        new public Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
-        {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-
-            for (int i = 0; i < sourceImage.Width; i++)
-            {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-                if (worker.CancellationPending)
-                {
-                    return null;
-                }
-
-                for (int j = 0; j < sourceImage.Height; j++)
-                {
-                    resultImage.SetPixel(i, j, CalculateNewPixelColor(sourceImage, i, j));
-                }
-            }
-
-            return resultImage;
-        }
-    }
-
-    class Erosion : Morphology
-    {
-        public Erosion(bool[,] mask)
-        {
-            this.mask = mask;
-            maskWidth = mask.GetLength(0);
-            maskHeight = mask.GetLength(1);
-        }
-
-        new public Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
-        {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-
-            for (int i = 0; i < sourceImage.Width; i++)
-            {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-                if (worker.CancellationPending)
-                {
-                    return null;
-                }
-
-                for (int j = 0; j < sourceImage.Height; j++)
-                {
-                    resultImage.SetPixel(i, j, CalculateNewPixelColorMin(sourceImage, i, j));
-                }
-            }
-
-            return resultImage;
+            return Color.FromArgb(minR, minG, minB);
         }
     }
 
     class Opening : Morphology
     {
-        public Opening(bool[,] mask)
+        public Opening(Bitmap sourceImage, int size, int typeOfMorphology) : base(sourceImage, size, typeOfMorphology)
         {
-            this.mask = mask;
-            maskWidth = mask.GetLength(0);
-            maskHeight = mask.GetLength(1);
-        }
+           // resultImage = sourceImage;
+            maxSize = size;
 
-        new public Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
-        {
-            Bitmap middleImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-            for (int i = 0; i < sourceImage.Width; ++i)
-            {
-                worker.ReportProgress((int)((float)i / 2 / middleImage.Width * 100));
-                if (worker.CancellationPending)
-                    return null;
-                for (int j = 0; j < sourceImage.Height; ++j)
-                    middleImage.SetPixel(i, j, CalculateNewPixelColor(sourceImage, i, j));
-            }
-
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-
+            resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             for (int i = 0; i < sourceImage.Width; i++)
             {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-                if (worker.CancellationPending)
-                {
-                    return null;
-                }
-
                 for (int j = 0; j < sourceImage.Height; j++)
                 {
-                    resultImage.SetPixel(i, j, CalculateNewPixelColorMin(sourceImage, i, j));
+                    resultImage.SetPixel(i, j, Erosion(sourceImage, i, j));
                 }
             }
-
-            return resultImage;
         }
     }
 
     class Closing : Morphology
     {
-        public Closing(bool[,] mask)
+        public Closing(Bitmap sourceImage, int size, int typeOfMorphology) : base(sourceImage, size, typeOfMorphology)
         {
-            this.mask = mask;
-            maskWidth = mask.GetLength(0);
-            maskHeight = mask.GetLength(1);
-        }
+            maxSize = size;
 
-        new public Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
-        {
-            Bitmap middleImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-            for (int i = 0; i < sourceImage.Width; ++i)
-            {
-                worker.ReportProgress((int)((float)i / 2 / middleImage.Width * 100));
-                if (worker.CancellationPending)
-                    return null;
-                for (int j = 0; j < sourceImage.Height; ++j)
-                    middleImage.SetPixel(i, j, CalculateNewPixelColorMin(sourceImage, i, j));
-            }
-
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-
+            resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             for (int i = 0; i < sourceImage.Width; i++)
             {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-                if (worker.CancellationPending)
-                {
-                    return null;
-                }
-
                 for (int j = 0; j < sourceImage.Height; j++)
                 {
-                    resultImage.SetPixel(i, j, CalculateNewPixelColor(sourceImage, i, j));
+                    resultImage.SetPixel(i, j, Dilation(sourceImage, i, j));
                 }
             }
-
-            return resultImage;
         }
     }
 }
