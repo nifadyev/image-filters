@@ -308,5 +308,31 @@ namespace ImageFilters
                 MessageBox.Show("Set structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void horizontalWavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            HorizontalWavesFilter filter = new HorizontalWavesFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void linearStretchingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            LinearStretching filter = new LinearStretching();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void topHatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            Morphology filter = new TopHatFilter(images[imageCounter], this.maxSize, 2);
+            filter.SetStructureElement(structureElement);
+
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
