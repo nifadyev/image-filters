@@ -59,6 +59,36 @@ namespace ImageFilters
             }
         }
 
+        private void setDefaultButton_Click(object sender, EventArgs e)
+        {
+            if (size != 0)
+            {
+                structureElement = new bool[size, size];
+                for (int m = 0; m < size; m++)
+                {
+                    for (int n = 0; n < size; n++)
+                    {
+                        dataGridView1[n, m].Style.BackColor = Color.Red;                     
+                        structureElement[m, n] = true;
+                        dataGridView1[n, m].Value = Convert.ToString(1);
+                    }
+                }
+                MessageBox.Show("Structure element was set", "Error", MessageBoxButtons.OK);
+                //TODO: Добавить закрытие 2 формы по нажатию кнопки ОК
+                //if (DialogResult == DialogResult.OK)
+                //{
+                //    this.Close();
+                    
+                //}
+
+            }
+
+            else
+            {
+                MessageBox.Show("Enter the size and type of structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             switch (e.Button)
@@ -116,5 +146,6 @@ namespace ImageFilters
         {
             SetSize(9);
         }
+
     }
 }

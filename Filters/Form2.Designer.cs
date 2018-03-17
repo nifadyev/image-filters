@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.setButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.size3radioButton = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.size5radioButton = new System.Windows.Forms.RadioButton();
-            this.size7radioButton = new System.Windows.Forms.RadioButton();
             this.size9radioButton = new System.Windows.Forms.RadioButton();
+            this.size7radioButton = new System.Windows.Forms.RadioButton();
+            this.size5radioButton = new System.Windows.Forms.RadioButton();
+            this.setDefaultButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -44,34 +45,34 @@
             // setButton
             // 
             this.setButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.setButton.Location = new System.Drawing.Point(390, 14);
+            this.setButton.Location = new System.Drawing.Point(345, 12);
             this.setButton.Name = "setButton";
-            this.setButton.Size = new System.Drawing.Size(75, 31);
+            this.setButton.Size = new System.Drawing.Size(120, 31);
             this.setButton.TabIndex = 1;
-            this.setButton.Text = "Set";
+            this.setButton.Text = "Set custom";
             this.setButton.UseVisualStyleBackColor = true;
             this.setButton.Click += new System.EventHandler(this.setButton_Click);
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Location = new System.Drawing.Point(16, 122);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -106,17 +107,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Structure element size";
             // 
-            // size5radioButton
+            // size9radioButton
             // 
-            this.size5radioButton.AutoSize = true;
-            this.size5radioButton.Location = new System.Drawing.Point(16, 48);
-            this.size5radioButton.Name = "size5radioButton";
-            this.size5radioButton.Size = new System.Drawing.Size(39, 24);
-            this.size5radioButton.TabIndex = 5;
-            this.size5radioButton.TabStop = true;
-            this.size5radioButton.Text = "5";
-            this.size5radioButton.UseVisualStyleBackColor = true;
-            this.size5radioButton.CheckedChanged += new System.EventHandler(this.size5radioButton_CheckedChanged);
+            this.size9radioButton.AutoSize = true;
+            this.size9radioButton.Location = new System.Drawing.Point(80, 48);
+            this.size9radioButton.Name = "size9radioButton";
+            this.size9radioButton.Size = new System.Drawing.Size(39, 24);
+            this.size9radioButton.TabIndex = 7;
+            this.size9radioButton.TabStop = true;
+            this.size9radioButton.Text = "9";
+            this.size9radioButton.UseVisualStyleBackColor = true;
+            this.size9radioButton.CheckedChanged += new System.EventHandler(this.size9radioButton_CheckedChanged);
             // 
             // size7radioButton
             // 
@@ -130,23 +131,35 @@
             this.size7radioButton.UseVisualStyleBackColor = true;
             this.size7radioButton.CheckedChanged += new System.EventHandler(this.size7radioButton_CheckedChanged);
             // 
-            // size9radioButton
+            // size5radioButton
             // 
-            this.size9radioButton.AutoSize = true;
-            this.size9radioButton.Location = new System.Drawing.Point(80, 48);
-            this.size9radioButton.Name = "size9radioButton";
-            this.size9radioButton.Size = new System.Drawing.Size(39, 24);
-            this.size9radioButton.TabIndex = 7;
-            this.size9radioButton.TabStop = true;
-            this.size9radioButton.Text = "9";
-            this.size9radioButton.UseVisualStyleBackColor = true;
-            this.size9radioButton.CheckedChanged += new System.EventHandler(this.size9radioButton_CheckedChanged);
+            this.size5radioButton.AutoSize = true;
+            this.size5radioButton.Location = new System.Drawing.Point(16, 48);
+            this.size5radioButton.Name = "size5radioButton";
+            this.size5radioButton.Size = new System.Drawing.Size(39, 24);
+            this.size5radioButton.TabIndex = 5;
+            this.size5radioButton.TabStop = true;
+            this.size5radioButton.Text = "5";
+            this.size5radioButton.UseVisualStyleBackColor = true;
+            this.size5radioButton.CheckedChanged += new System.EventHandler(this.size5radioButton_CheckedChanged);
+            // 
+            // setDefaultButton
+            // 
+            this.setDefaultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.setDefaultButton.Location = new System.Drawing.Point(345, 53);
+            this.setDefaultButton.Name = "setDefaultButton";
+            this.setDefaultButton.Size = new System.Drawing.Size(120, 31);
+            this.setDefaultButton.TabIndex = 6;
+            this.setDefaultButton.Text = "Set default";
+            this.setDefaultButton.UseVisualStyleBackColor = true;
+            this.setDefaultButton.Click += new System.EventHandler(this.setDefaultButton_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 484);
+            this.Controls.Add(this.setDefaultButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.setButton);
@@ -167,5 +180,6 @@
         private System.Windows.Forms.RadioButton size9radioButton;
         private System.Windows.Forms.RadioButton size7radioButton;
         private System.Windows.Forms.RadioButton size5radioButton;
+        private System.Windows.Forms.Button setDefaultButton;
     }
 }
