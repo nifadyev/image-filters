@@ -334,5 +334,13 @@ namespace ImageFilters
 
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void idealReflectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            progressBar1.Visible = cancelButton.Visible = cancelButton.Enabled = true;
+
+            IdealReflector filter = new IdealReflector(images[imageCounter]);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
