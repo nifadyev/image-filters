@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    //Inverts colors of image
     class InvertFilter : Filters
     {
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)

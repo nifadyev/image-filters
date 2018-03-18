@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-//using System.ComponentModel;
 
 namespace ImageFilters
 {
+    // Basic class for all morphologies filters
     class Morphology : Filters
     {
         public int maxSize;
@@ -37,12 +37,13 @@ namespace ImageFilters
                 case 1:
                     return Dilation(resultImage, x, y);
                 case 2:
-                    return Erosion(resultImage/*sourceImage*/, x, y);
+                    return Erosion(resultImage, x, y);
                 default:
                     return Color.Black;
             }
         }
 
+        // Reduces black noise(with loss of object areas)
         protected Color Dilation(Bitmap sourceImage, int x, int y)
         {
             int maxR = 0;
@@ -79,6 +80,7 @@ namespace ImageFilters
             return Color.FromArgb(maxR, maxG, maxB);
         }
 
+        // Reduces white noise(with loss of object areas)
         protected Color Erosion(Bitmap sourceImage, int x, int y)
         {
             int minR = 255;
@@ -116,11 +118,11 @@ namespace ImageFilters
         }
     }
 
+    // Reduces white noise(if objects without noise)
     class Opening : Morphology
     {
         public Opening(Bitmap sourceImage, int size, int typeOfMorphology) : base(sourceImage, size, typeOfMorphology)
         {
-           // resultImage = sourceImage;
             maxSize = size;
 
             resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
@@ -134,6 +136,7 @@ namespace ImageFilters
         }
     }
 
+    // Reduces black noise(if image background doesn't have noise)
     class Closing : Morphology
     {
         public Closing(Bitmap sourceImage, int size, int typeOfMorphology) : base(sourceImage, size, typeOfMorphology)

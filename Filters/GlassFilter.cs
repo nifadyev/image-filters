@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    //Creates "glass" between image and screen
     class GlassFilter : Filters
     {
         Random r = new Random();

@@ -11,6 +11,7 @@ using System.ComponentModel;
 
 namespace ImageFilters
 {
+    // Basic class for all point filters
     abstract class Filters
     {
         public Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
@@ -20,17 +21,15 @@ namespace ImageFilters
             for (int i = 0; i < sourceImage.Width; i++)
             {
                 worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-
                 if (worker.CancellationPending)
                 {
                     return null;
                 }
 
-                for (int j = 0; j < sourceImage.Height; j++)
+                for (int j = 0; j < resultImage.Height; j++)
                 {
                     resultImage.SetPixel(i, j, CalculateNewPixelColor(sourceImage, i, j));
                 }
-
             }
 
             return resultImage;
@@ -48,8 +47,8 @@ namespace ImageFilters
             {
                 return max;
             }
+
             return value;
         }
-
     }
 }

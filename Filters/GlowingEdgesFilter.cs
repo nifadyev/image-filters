@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,35 +10,9 @@ using System.Drawing;
 
 namespace ImageFilters
 {
+    // Makes edges of image glows
     class GlowingEdgesFilter : MatrixFilter
     {
-        //protected Color[] kernel;
-        //int width;
-        //int height;
-        //protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
-        //{
-        //    int radiusX = width / 2;
-        //    int radiusY = height / 2;
-        //    for (int l = -radiusY; l <= radiusY; ++l)
-        //        for (int k = -radiusX; k <= radiusX; ++k)
-        //        {
-        //            int idX = Clamp(x + k, 0, sourceImage.Width - 1);
-        //            int idY = Clamp(y + l, 0, sourceImage.Height - 1);
-        //            kernel[(l + radiusX) * height + k + radiusY] = sourceImage.GetPixel(idX, idY);
-        //        }
-        //    Array.Sort(kernel);
-        //    return kernel[kernel.GetLength(0) / 2 * height + kernel.GetLength(1) / 2];
-        //}
-        //public GlowingEdgesFilter()
-        //{
-        //    height = 5;
-        //    width = 5;
-        //    kernel = new Color[height * width];
-        //}
-
-
-
-        //commit: change converting gray scale
         private float[,] kernelY = { {-1, -2, -1 },
                                      { 0, 0, 0   },
                                      { 1, 2, 1}  };
@@ -80,7 +57,6 @@ namespace ImageFilters
             float resultR = (float)Math.Sqrt(resultRkernelX * resultRkernelX + resultRkernelY * resultRkernelY);
             float resultG = (float)Math.Sqrt(resultGkernelX * resultGkernelX + resultGkernelY * resultGkernelY);
             float resultB = (float)Math.Sqrt(resultBkernelX * resultBkernelX + resultBkernelY * resultBkernelY);
-            //int intensity = (int)(resultR + resultG + resultB) / 3;
 
             return Color.FromArgb(Clamp((int)resultR, 0, 255), Clamp((int)resultG, 0, 255), Clamp((int)resultB, 0, 255));
         }

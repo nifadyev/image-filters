@@ -1,0 +1,21 @@
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\bin\Debug\WindowsFormsExample.exe.config
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\bin\Debug\WindowsFormsExample.exe
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\bin\Debug\WindowsFormsExample.pdb
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.Properties.Resources.resources
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.csproj.GenerateResource.Cache
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.csproj.CoreCompileInputs.cache
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.exe
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.pdb
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\WindowsFormsExample.csprojResolveAssemblyReference.cache
+D:\YandexDisk\Programming\C#\WindowsFormsExample\WindowsFormsExample\obj\Debug\ImageFilters.Form1.resources
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.csprojResolveAssemblyReference.cache
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\ImageFilters.Form1.resources
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.Properties.Resources.resources
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.csproj.GenerateResource.Cache
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.csproj.CoreCompileInputs.cache
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.exe
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\WindowsFormsExample.pdb
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\bin\Debug\WindowsFormsExample.exe.config
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\bin\Debug\WindowsFormsExample.exe
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\bin\Debug\WindowsFormsExample.pdb
+D:\YandexDisk\Programming\C#\Image filters\WindowsFormsExample\obj\Debug\ImageFilters.Form2.resources

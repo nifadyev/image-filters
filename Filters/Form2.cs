@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,16 +20,9 @@ namespace ImageFilters
 
         public Form2()
         {
-            Form1 form1 = (Form1)this.Owner;
-            InitializeComponent();
-        }
-
-        public Form2(Form form)
-        {
             InitializeComponent();
             dataGridView1.Hide();
         }
-
 
         public int maxSize
         {
@@ -45,17 +41,22 @@ namespace ImageFilters
                 {
                     for (int n = 0; n < size; n++)
                     {
-                        if (dataGridView1[n, m].Style.BackColor == Color.Red)
+                        if (dataGridView1[n, m].Style.BackColor == Color.Green)
                         {
                             structureElement[m, n] = true;
                         }
                     }
                 }
+
+                if (MessageBox.Show("Structure element was successfuly set", "Success") == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
 
             else
             {
-                MessageBox.Show("Enter the size and type of structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error! Choose the size and type of structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);             
             }
         }
 
@@ -68,24 +69,21 @@ namespace ImageFilters
                 {
                     for (int n = 0; n < size; n++)
                     {
-                        dataGridView1[n, m].Style.BackColor = Color.Red;                     
+                        dataGridView1[n, m].Style.BackColor = Color.Green;                     
                         structureElement[m, n] = true;
                         dataGridView1[n, m].Value = Convert.ToString(1);
                     }
                 }
-                MessageBox.Show("Structure element was set", "Error", MessageBoxButtons.OK);
-                //TODO: Добавить закрытие 2 формы по нажатию кнопки ОК
-                //if (DialogResult == DialogResult.OK)
-                //{
-                //    this.Close();
-                    
-                //}
 
+                if (MessageBox.Show("Structure element was successfuly set", "Success") == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
 
             else
             {
-                MessageBox.Show("Enter the size and type of structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error! Choose the size and type of structure element", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -94,25 +92,23 @@ namespace ImageFilters
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Red;
+                    dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Green;
                     dataGridView1[e.ColumnIndex, e.RowIndex].Value = Convert.ToString(1);
                     break;
+
                 case MouseButtons.Right:
                     dataGridView1[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.White;
                     dataGridView1[e.ColumnIndex, e.RowIndex].Value = Convert.ToString(0);
                     break;
             }
-
-            
         }
 
         private void SetSize(int chosedSize)
         {
+            size = chosedSize;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.Rows.Clear();
-
-            size = chosedSize;
             dataGridView1.Show();
             dataGridView1.RowCount = dataGridView1.ColumnCount = size;
 
@@ -146,6 +142,5 @@ namespace ImageFilters
         {
             SetSize(9);
         }
-
     }
 }

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             this.setButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.size3radioButton = new System.Windows.Forms.RadioButton();
@@ -38,6 +37,7 @@
             this.size7radioButton = new System.Windows.Forms.RadioButton();
             this.size5radioButton = new System.Windows.Forms.RadioButton();
             this.setDefaultButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,29 +50,14 @@
             this.setButton.Size = new System.Drawing.Size(120, 31);
             this.setButton.TabIndex = 1;
             this.setButton.Text = "Set custom";
+            this.toolTip1.SetToolTip(this.setButton, "Set own values");
             this.setButton.UseVisualStyleBackColor = true;
             this.setButton.Click += new System.EventHandler(this.setButton_Click);
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Location = new System.Drawing.Point(16, 122);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -106,6 +91,7 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Structure element size";
+            this.toolTip1.SetToolTip(this.groupBox1, "Choose size of structure element");
             // 
             // size9radioButton
             // 
@@ -151,6 +137,7 @@
             this.setDefaultButton.Size = new System.Drawing.Size(120, 31);
             this.setDefaultButton.TabIndex = 6;
             this.setDefaultButton.Text = "Set default";
+            this.toolTip1.SetToolTip(this.setDefaultButton, "Structure element contains only 1");
             this.setDefaultButton.UseVisualStyleBackColor = true;
             this.setDefaultButton.Click += new System.EventHandler(this.setDefaultButton_Click);
             // 
@@ -163,8 +150,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.setButton);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Structure element";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -181,5 +170,6 @@
         private System.Windows.Forms.RadioButton size7radioButton;
         private System.Windows.Forms.RadioButton size5radioButton;
         private System.Windows.Forms.Button setDefaultButton;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

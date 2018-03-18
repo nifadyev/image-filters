@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
-    //commit: change converting gray scale
+    //Detects and shows the edges of the image. Makes an image gray scale. After filtering image looks like blueprint
     class SobolFilter : MatrixFilter
     {
         private float[,] kernelY = { {-1, -2, -1 },
-                                     { 0, 0, 0   },
-                                     { 1, 2, 1}  };
+                                     { 0,  0,  0 },
+                                     { 1,  2,  1}};
 
         private float[,] kernelX = { {-1, -2, 1 },
-                                     { -2, 0, 2 },
-                                     { -1, 2, 1}};
+                                     {-2,  0, 2 },
+                                     {-1,  2, 1}};
 
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {

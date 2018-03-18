@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    // Makes white and black image
     class GrayScaleFilter : Filters
     {
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)

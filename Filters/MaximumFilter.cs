@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    // Finds maximum on each color chanel 
     class MaximumFilter : Filters
     {
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)

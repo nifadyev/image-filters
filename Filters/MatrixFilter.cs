@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    // Basic class for all matrix filters
     class MatrixFilter : Filters
     {
         protected float[,] kernel;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    // Makes image blurry
     class BlurFilter : MatrixFilter
     {
         public BlurFilter()

@@ -67,6 +67,7 @@
     <Compile Include="HIghBrightnessFilter.cs" />
     <Compile Include="HighSharpnessFilter.cs" />
     <Compile Include="HorizontalWavesFilter.cs" />
+    <Compile Include="IdealReflector.cs" />
     <Compile Include="InvertFilter.cs" />
     <Compile Include="LinearStretching.cs" />
     <Compile Include="MatrixFilter.cs" />

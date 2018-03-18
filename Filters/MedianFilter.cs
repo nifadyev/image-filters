@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,32 +10,23 @@ using System.Drawing;
 
 namespace ImageFilters
 {
+    //Reduces noise level(effective on "pepper-salt" noise)
     class MedianFilter : Filters
     {
-        public MedianFilter()
-        {
-            //kernel = new float[,];
-        }
+        int size = 3;
+        public MedianFilter() {}
 
         protected override Color CalculateNewPixelColor(Bitmap sourceImage, int x, int y)
         {
-            Color[] colors = new Color[9];
-            int[] R = new int[9];
-            int[] G = new int[9];
-            int[] B = new int[9];
+            int matrixSize = size * size;
+            Color[] colors = new Color[matrixSize];
+            int[] R = new int[matrixSize];
+            int[] G = new int[matrixSize];
+            int[] B = new int[matrixSize];
 
-            colors[0] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), Clamp(y - 1, 0, sourceImage.Height - 1));
-            colors[1] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), y);
-            colors[2] = sourceImage.GetPixel(Clamp(x - 1, 0, sourceImage.Width - 1), Clamp(y + 1, 0, sourceImage.Height - 1));
-            colors[3] = sourceImage.GetPixel(x, Clamp(y - 1, 0, sourceImage.Height - 1));
-            colors[4] = sourceImage.GetPixel(x, y);
-            colors[5] = sourceImage.GetPixel(x, Clamp(y + 1, 0, sourceImage.Height - 1));
-            colors[6] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), Clamp(y - 1, 0, sourceImage.Height - 1));
-            colors[7] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), y);
-            colors[8] = sourceImage.GetPixel(Clamp(x + 1, 0, sourceImage.Width - 1), Clamp(y + 1, 0, sourceImage.Height - 1));
-
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < matrixSize; i++)
             {
+                colors[i] = sourceImage.GetPixel(Clamp(x - 1 + i / size, 0, sourceImage.Width - 1), Clamp(y - 1 + i % size, 0, sourceImage.Height - 1));
                 R[i] = colors[i].R;
                 G[i] = colors[i].G;
                 B[i] = colors[i].B;

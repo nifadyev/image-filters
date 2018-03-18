@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ImageFilters
 {
+    // Makes image blurry(Gauss method)
     class GaussianFilter : MatrixFilter
     {
         public void CreateGaussianKernel(int radius, float sigma)
