@@ -296,5 +296,11 @@ namespace ImageFilters
 
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void colorQuantizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new ColorQuantization();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
